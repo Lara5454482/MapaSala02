@@ -61,12 +61,24 @@ namespace MapaSala.Formularios
         private void dtGridDisciplina_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             LinhaSelecionada = e.RowIndex;
-            MessageBox.Show("Novo Valor: " + LinhaSelecionada);
+            txtNomeDisciplina.Text = dtGridDisciplina.Rows[LinhaSelecionada].Cells[1].Value.ToString();
+            txtSigla.Text = dtGridDisciplina.Rows[LinhaSelecionada].Cells[0].Value.ToString();
+            numId.Value = Convert.ToInt32(dtGridDisciplina.Rows[LinhaSelecionada].Cells[0].Value);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             dtGridDisciplina.Rows.RemoveAt(LinhaSelecionada);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow a = dtGridDisciplina.Rows[LinhaSelecionada];
+            a.Cells[0].Value = numId.Value;
+            a.Cells[1].Value = txtNomeDisciplina.Text;
+            a.Cells[2].Value = txtSigla.Text;
+
+
         }
     }
 }
