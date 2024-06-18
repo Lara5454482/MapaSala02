@@ -80,5 +80,10 @@ namespace MapaSala.Formularios
 
 
         }
+
+        private void frmDisciplina_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
