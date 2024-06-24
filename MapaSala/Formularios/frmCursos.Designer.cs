@@ -171,7 +171,6 @@ namespace MapaSala.Formularios
             this.Controls.Add(this.chkAtivo);
             this.Name = "frmCursos";
             this.Text = "frmCursos";
-            this.Load += new System.EventHandler(this.frmCursos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridCursos)).EndInit();
             this.ResumeLayout(false);

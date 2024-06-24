@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entitidades\CursosEntidade.cs" />
-    <Compile Include="Entitidades\DisciplinaEntidade.cs" />
-    <Compile Include="Entitidades\ProfessoresEntidade.cs" />
-    <Compile Include="Entitidades\SalasEntidade.cs" />
-    <Compile Include="Entitidades\UsuariosEntidade.cs" />
+    <Compile Include="entidades\CursosEntidade.cs" />
+    <Compile Include="entidades\DisciplinaEntidade.cs" />
+    <Compile Include="entidades\ProfessoresEntidade.cs" />
+    <Compile Include="entidades\SalasEntidade.cs" />
+    <Compile Include="entidades\UsuariosEntidade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\UsuariosView.cs" />
   </ItemGroup>

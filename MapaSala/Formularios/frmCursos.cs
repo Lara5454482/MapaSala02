@@ -13,19 +13,25 @@ namespace MapaSala.Formularios
 {
     public partial class frmCursos : Form
     {
-        BindingSource dados;
+        DataTable dados;
         int LinhaSelecionada;
         public frmCursos()
         {
             InitializeComponent();
-            dados = new BindingSource();
+            dados = new DataTable();
             dtGridCursos.DataSource = dados;
+
+            foreach (var atributos in typeof(CursosEntidade).GetProperties())
+            {
+                dados.Columns.Add(atributos.Name);
+            }
+
+            dados.Rows.Add(1, "Desenvolvimento de Sistemas", "Integral", true);
+            dados.Rows.Add(2, "Itinerário Formativo", "Manhã", true);
+            dados.Rows.Add(3, "Administração", "Integral", true);
         }
 
-        private void frmCursos_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void bntExcluir_Click(object sender, EventArgs e)
         {
@@ -48,10 +54,10 @@ namespace MapaSala.Formularios
         private void dtGridCursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             LinhaSelecionada = e.RowIndex;
-            txtNome.Text = dtGridCursos.Rows[LinhaSelecionada].Cells[0].Value.ToString();
-            txtTurno.Text = dtGridCursos.Rows[LinhaSelecionada].Cells[0].Value.ToString();
-            chkAtivo.Checked = Convert.ToBoolean(dtGridCursos.Rows[LinhaSelecionada].Cells[0].Value);
-            numId.Value = Convert.ToInt32(dtGridCursos.Rows[LinhaSelecionada].Cells[1].Value);
+            txtNome.Text = dtGridCursos.Rows[LinhaSelecionada].Cells[1].Value.ToString();
+            txtTurno.Text = dtGridCursos.Rows[LinhaSelecionada].Cells[2].Value.ToString();
+            chkAtivo.Checked = Convert.ToBoolean(dtGridCursos.Rows[LinhaSelecionada].Cells[3].Value);
+            numId.Value = Convert.ToInt32(dtGridCursos.Rows[LinhaSelecionada].Cells[0].Value);
         }
 
         private void bntEditar_Click(object sender, EventArgs e)
@@ -66,13 +72,13 @@ namespace MapaSala.Formularios
 
         private void bntSalvar_Click(object sender, EventArgs e)
         {
-            CursosEntidade cursosEntidade = new CursosEntidade();
-            d = cursosEntidade;
-            h.Id = Convert.ToInt32(numId.Value);
-            h.Nome = txtNomeDisciplina.Text;
-            h.Sigla = txtSigla.Text;
+            CursosEntidade cursos = new CursosEntidade();
+            cursos.Id = Convert.ToInt32( numId.Value);
+            cursos.Nome = txtNome.Text;
+            cursos.Turno = txtTurno.Text;
+            cursos.Ativo = chkAtivo.Checked;
 
-            dados.Rows.Add(h.Linha());
+            dados.Rows.Add(cursos.Linha());
             LimparCampos();
         }
     }

@@ -13,15 +13,24 @@ namespace MapaSala.Formularios
 {
     public partial class frmProfessores : Form
     {
-        BindingSource dados;
+        DataTable dados;
 
         int LinhaSelecionada;
 
         public frmProfessores()
         {
             InitializeComponent();
-            dados = new BindingSource();
+            dados = new DataTable();
             dtGridProfessores.DataSource = dados;
+
+            foreach (var atributos in typeof(ProfessoresEntidade).GetProperties())
+            {
+                dados.Columns.Add(atributos.Name);
+            }
+
+            dados.Rows.Add(1, "Fernando", "Nando");
+            dados.Rows.Add(2, "lucilene", "lulu");
+            dados.Rows.Add(3, "galvani", "vani");
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -31,7 +40,7 @@ namespace MapaSala.Formularios
             p.Apelido = txtApelido.Text;
             p.Nome = txtNomeCompleto.Text;
 
-            dados.Add(p);
+            dados.Rows.Add(p.Linha());
 
             LimparCampos();
         }
@@ -69,6 +78,11 @@ namespace MapaSala.Formularios
         private void btnExcluir_Click_1(object sender, EventArgs e)
         {
             dtGridProfessores.Rows.RemoveAt(LinhaSelecionada);
+        }
+
+        private void frmProfessores_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

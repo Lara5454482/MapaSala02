@@ -13,13 +13,24 @@ namespace MapaSala.Formularios
 {
     public partial class frmSalas : Form
     {
-        BindingSource dados;
+        DataTable dados;
         int LinhaSelecionada;
         public frmSalas()
         {
             InitializeComponent();
-            dados = new BindingSource();
+            dados = new DataTable();
             dtGridSalas.DataSource = dados;
+
+            foreach (var atributos in typeof(SalasEntidade).GetProperties())
+            {
+                dados.Columns.Add(atributos.Name);
+            }
+
+
+            dados.Rows.Add(1, "sala b", true, 45, 41,true);
+
+            dtGridSalas.DataSource = dados;
+
         }
 
         private void frmSalas_Load(object sender, EventArgs e)
@@ -37,7 +48,7 @@ namespace MapaSala.Formularios
             sala.NumeroComputadores = Convert.ToInt32(numPc.Value);
             sala.Disponivel = chkDisponivel.Checked;
 
-            dados.Add(sala);
+            dados.Rows.Add(sala.Linha());
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)

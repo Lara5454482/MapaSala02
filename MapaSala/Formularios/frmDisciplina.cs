@@ -85,5 +85,10 @@ namespace MapaSala.Formularios
         {
 
         }
+
+        private void dtGridDisciplina_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
