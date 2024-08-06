@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using Model.Entitidades;
+using System.Data;
 
 namespace MapaSala.DAO
 {
@@ -16,10 +18,10 @@ namespace MapaSala.DAO
         {
             Conexao = new SqlConnection(LinhaConexao);
         }
-        public void Inserir(ProfessorEntidade professor)
+        public void Inserir(ProfessoresEntidade professor)
         {
             Conexao.Open();
-            string query = "Insert into Professor (Nome , Apelido) Values (@nome, @apelido) ";
+            string query = "Insert into Professores (Nome , Apelido) Values (@nome, @apelido) ";
             SqlCommand comando = new SqlCommand(query, Conexao);
             SqlParameter parametro1 = new SqlParameter("@nome", professor.Nome);
             SqlParameter parametro2 = new SqlParameter("@apelido", professor.Apelido);
@@ -28,6 +30,36 @@ namespace MapaSala.DAO
             comando.ExecuteNonQuery();
             Conexao.Close();
 
+        }
+
+        public DataTable ObterProfessores()
+        {
+            DataTable dt = new DataTable();
+            Conexao.Open();
+            string query = "SELECT Id, Nome, Apelido FROM Professores Order by Id desc";
+            SqlCommand comando = new SqlCommand(query, Conexao);
+
+            SqlDataReader Leitura = comando.ExecuteReader();
+
+            foreach(var atributos in typeof (ProfessoresEntidade).GetProperties())
+            {
+                dt.Columns.Add(atributos.Name);
+            }
+
+            if(Leitura.HasRows)
+            {
+                while(Leitura.Read())
+                {
+                    ProfessoresEntidade p = new ProfessoresEntidade();
+                    p.Id = Convert.ToInt32(Leitura[0]);
+                    p.Nome = Leitura[1].ToString();
+                    p.Apelido = Leitura[2].ToString();
+                    dt.Rows.Add(p.Linha());
+                }
+            }
+            
+
+            return dt;
         }
 
     }
