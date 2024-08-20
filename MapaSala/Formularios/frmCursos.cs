@@ -81,5 +81,10 @@ namespace MapaSala.Formularios
             dados.Rows.Add(cursos.Linha());
             LimparCampos();
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

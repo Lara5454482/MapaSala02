@@ -41,6 +41,9 @@ namespace MapaSala.Formularios
             this.numId = new System.Windows.Forms.NumericUpDown();
             this.dtGridCursos = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridCursos)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +51,7 @@ namespace MapaSala.Formularios
             // chkAtivo
             // 
             this.chkAtivo.AutoSize = true;
-            this.chkAtivo.Location = new System.Drawing.Point(322, 47);
+            this.chkAtivo.Location = new System.Drawing.Point(363, 44);
             this.chkAtivo.Name = "chkAtivo";
             this.chkAtivo.Size = new System.Drawing.Size(50, 17);
             this.chkAtivo.TabIndex = 0;
@@ -64,7 +67,7 @@ namespace MapaSala.Formularios
             // 
             // bntSalvar
             // 
-            this.bntSalvar.Location = new System.Drawing.Point(540, 44);
+            this.bntSalvar.Location = new System.Drawing.Point(581, 43);
             this.bntSalvar.Name = "bntSalvar";
             this.bntSalvar.Size = new System.Drawing.Size(75, 23);
             this.bntSalvar.TabIndex = 2;
@@ -74,7 +77,7 @@ namespace MapaSala.Formularios
             // 
             // bntExcluir
             // 
-            this.bntExcluir.Location = new System.Drawing.Point(378, 44);
+            this.bntExcluir.Location = new System.Drawing.Point(419, 41);
             this.bntExcluir.Name = "bntExcluir";
             this.bntExcluir.Size = new System.Drawing.Size(75, 23);
             this.bntExcluir.TabIndex = 3;
@@ -84,7 +87,7 @@ namespace MapaSala.Formularios
             // 
             // bntLimpar
             // 
-            this.bntLimpar.Location = new System.Drawing.Point(459, 43);
+            this.bntLimpar.Location = new System.Drawing.Point(500, 41);
             this.bntLimpar.Name = "bntLimpar";
             this.bntLimpar.Size = new System.Drawing.Size(75, 23);
             this.bntLimpar.TabIndex = 4;
@@ -94,7 +97,7 @@ namespace MapaSala.Formularios
             // 
             // bntEditar
             // 
-            this.bntEditar.Location = new System.Drawing.Point(621, 45);
+            this.bntEditar.Location = new System.Drawing.Point(662, 44);
             this.bntEditar.Name = "bntEditar";
             this.bntEditar.Size = new System.Drawing.Size(75, 23);
             this.bntEditar.TabIndex = 5;
@@ -152,11 +155,41 @@ namespace MapaSala.Formularios
             this.label3.TabIndex = 20;
             this.label3.Text = "Turno";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(315, 47);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(28, 20);
+            this.textBox1.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label1.Location = new System.Drawing.Point(730, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Sigla";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(312, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Sigla";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // frmCursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 326);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtGridCursos);
             this.Controls.Add(this.numId);
@@ -192,5 +225,8 @@ namespace MapaSala.Formularios
         private System.Windows.Forms.NumericUpDown numId;
         private System.Windows.Forms.DataGridView dtGridCursos;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -55,7 +55,7 @@ namespace MapaSala.DAO
                     p.Id = Convert.ToInt32(Leitura[0]);
                     p.Nome = Leitura[1].ToString();
                     p.Turno = Leitura[2].ToString();
-                    p.Ativo = Leitura[3].ToBool();
+                    p.Ativo = Convert.ToBoolean( Leitura[3]);
                     dt.Rows.Add(p.Linha());
                 }
             }

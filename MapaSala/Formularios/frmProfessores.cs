@@ -88,5 +88,10 @@ namespace MapaSala.Formularios
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            dtGridProfessores.DataSource = dao.Pesquisar(textBox1.Text);
+        }
     }
 }
