@@ -9,23 +9,32 @@ using System.Threading.Tasks;
 
 namespace MapaSala.DAO
 {
-    public class disciplinaDAO
+    public class SalasDAO
     {
         private string LinhaConexao = "Server=LS05MPF;Database=AULA_DS;User Id=sa;Password=admsasql;";
         private SqlConnection Conexao;
-        public disciplinaDAO()
+        public SalasDAO()
         {
             Conexao = new SqlConnection(LinhaConexao);
         }
-        public void Inserir(DisciplinaEntidade disciplina)
+
+        public void Inserir(SalasEntidade objeto)
         {
             Conexao.Open();
-            string query = "Insert into Disciplinas (Nome , Sigla) Values (@nome, @sigla) ";
+            string query = "Insert into Salas (Nome , NumeroComputadores, NumeroCadeiras, IsLab, Disponivel) Values (@nome, @numerocomputadores, @numerocadeiras, @islab, @disponivel) ";
             SqlCommand comando = new SqlCommand(query, Conexao);
-            SqlParameter parametro1 = new SqlParameter("@nome", disciplina.Nome);
-            SqlParameter parametro2 = new SqlParameter("@apelido", disciplina.Sigla);
+
+            SqlParameter parametro1 = new SqlParameter("@nome", objeto.Nome);
+            SqlParameter parametro2 = new SqlParameter("@numerocomputadores", objeto.NumeroComputadores);
+            SqlParameter parametro3 = new SqlParameter("@numerocadeiras", objeto.NumeroCadeiras);
+            SqlParameter parametro4 = new SqlParameter("@islab", objeto.IsLab);
+            SqlParameter parametro5 = new SqlParameter("@disponivel", objeto.Disponivel);
             comando.Parameters.Add(parametro1);
             comando.Parameters.Add(parametro2);
+            comando.Parameters.Add(parametro3);
+            comando.Parameters.Add(parametro4);
+            comando.Parameters.Add(parametro5);
+
             comando.ExecuteNonQuery();
             Conexao.Close();
 
@@ -35,7 +44,7 @@ namespace MapaSala.DAO
         {
             DataTable dataTable = new DataTable();
 
-            string query = "SELECT Id, Nome FROM Disciplinas";
+            string query = "SELECT Id, Nome FROM Salas";
 
             using (SqlConnection connection = new SqlConnection(LinhaConexao))
             {
@@ -56,11 +65,11 @@ namespace MapaSala.DAO
             return dataTable;
         }
 
-        public DataTable ObterDisciplinas ()
+        public DataTable ObterDisciplinas()
         {
             DataTable dt = new DataTable();
             Conexao.Open();
-            string query = "SELECT Id, Nome, Turno, Ativo  FROM Cursos Order by Id desc";
+            string query = "SELECT Nome , Turno, Sigla, Ativo FROM Cursos Order by Id desc";
             SqlCommand comando = new SqlCommand(query, Conexao);
 
             SqlDataReader Leitura = comando.ExecuteReader();
@@ -74,20 +83,15 @@ namespace MapaSala.DAO
             {
                 while (Leitura.Read())
                 {
-                    DisciplinaEntidade p = new DisciplinaEntidade();
+                    ProfessoresEntidade p = new ProfessoresEntidade();
                     p.Id = Convert.ToInt32(Leitura[0]);
                     p.Nome = Leitura[1].ToString();
-                    p.Sigla = Leitura[2].ToString();
+                    p.Apelido = Leitura[2].ToString();
                     dt.Rows.Add(p.Linha());
                 }
             }
-
-
+            Conexao.Close();
             return dt;
         }
-
-
-
-
     }
 }
