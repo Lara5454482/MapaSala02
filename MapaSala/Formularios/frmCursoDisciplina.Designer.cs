@@ -67,6 +67,7 @@ namespace MapaSala.Formularios
             this.btnAdicionar.TabIndex = 10;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // label2
             // 
@@ -118,7 +119,7 @@ namespace MapaSala.Formularios
             this.label3.TabIndex = 14;
             this.label3.Text = "Período";
             // 
-            // frmCursoDisciplina
+            // FrmCursoDisciplina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +132,7 @@ namespace MapaSala.Formularios
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbCursos);
             this.Controls.Add(this.label1);
-            this.Name = "frmCursoDisciplina";
+            this.Name = "FrmCursoDisciplina";
             this.Text = "frmCursosDisciplina";
             ((System.ComponentModel.ISupportInitialize)(this.dtCursoDisciplina)).EndInit();
             this.ResumeLayout(false);

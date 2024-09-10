@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MapaSala.DAO;
+using Model.entidades;
 
 namespace MapaSala.Formularios
 {
@@ -16,6 +17,12 @@ namespace MapaSala.Formularios
     {
         disciplinaDAO disciplinaDAO = new disciplinaDAO();
         cursoDAO cursoDAO = new cursoDAO();
+        CursoDisciplinaDAO dao = new CursoDisciplinaDAO();
+
+        private void AtualizarGrid(DataTable dados)
+        {
+            dtCursoDisciplina.DataSource = dados;
+        }
 
         public FrmCursoDisciplina()
         {
@@ -31,7 +38,20 @@ namespace MapaSala.Formularios
             cbCursos.DisplayMember = "Nome";
             cbCursos.ValueMember = "Id";
 
+            AtualizarGrid(dao.ObterCursosDisciplina());
 
+
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            CursoDisciplinaDAO cursoDisciplinaDAO = new CursoDisciplinaDAO();
+            CursoDisciplinaEntidade entidade = new CursoDisciplinaEntidade();
+            entidade.CursoId = Convert.ToInt32(cbCursos.SelectedValue);
+            entidade.DisciplinaId = Convert.ToInt32(cbDisciplinas.SelectedValue);
+            entidade.Periodo = cbperiodos.SelectedValue.ToString();
+
+            cursoDisciplinaDAO.Inserir(entidade);
         }
     }
 }

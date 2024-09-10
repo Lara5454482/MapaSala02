@@ -40,23 +40,25 @@ namespace MapaSala.DAO
         {
             DataTable dt = new DataTable();
             Conexao.Open();
-            string query = "SELECT FROM Order by Id desc";
+            string query = @"SELECT C.Nome NomeCurso, D.Nome NomeDiciplina, CD.periodo FROM CURSO_DISCIPLINA CD
+                                  INNER JOIN CURSOS C ON(C.Id = CD.Curso.Id) 
+                                  INNER JOIN DISCIPLINAS D ON(C.Id = CD.Disciplinas.Id)
+                                  ORDER BY CD.Id DESC";
             SqlCommand comando = new SqlCommand(query, Conexao);
             SqlDataReader Leitura = comando.ExecuteReader();
-            foreach (var atributos in typeof(DisciplinaEntidade).GetProperties())
-            {
-                dt.Columns.Add(atributos.Name);
-            }
+            
+            dt.Columns.Add("NomeCurso");
+            dt.Columns.Add("NomeDiciplina");
+            dt.Columns.Add("Periodo");
+
             if (Leitura.Read())
             {
                 while (Leitura.Read())
                 {
                     CursoDisciplinaEntidade p = new CursoDisciplinaEntidade();
-                    p.Id = Convert.ToInt32(Leitura[0]);
-                    p.DisciplinaId = Convert.ToInt32(Leitura[1]);
-                    p.CursoId = Convert.ToInt32(Leitura[2]);
-                    p.NomeCurso = Leitura[3].ToString();
-                    p.NomeDisciplina = Leitura[4].ToString();
+                    p.NomeCurso = Leitura[0].ToString();
+                    p.NomeDisciplina = Leitura[1].ToString();
+                    p.Periodo = Leitura[2].ToString();
                     dt.Rows.Add(p.Linha()); 
                 }
             }
