@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MapaSala.DAO;
 using Model.Entitidades;
 
 namespace MapaSala.Formularios
@@ -15,8 +16,7 @@ namespace MapaSala.Formularios
     public partial class frmDisciplina : Form
     {
         DataTable dados;
-        int LinhaSelecionada;
-
+        disciplinaDAO dao = new disciplinaDAO();
         public frmDisciplina()
         {
             InitializeComponent();
@@ -27,12 +27,10 @@ namespace MapaSala.Formularios
                 dados.Columns.Add(atributos.Name);
             }
 
-            dados.Rows.Add(1, "Matematica", "MAT");
-            dados.Rows.Add(2, "Português", "PORT");
-            dados.Rows.Add(3, "Física", "FIS");
 
+            dtGridDisciplina.DataSource = dao.ObterDisciplinas();
             dtGridDisciplina.DataSource = dados;
-            
+
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -42,7 +40,11 @@ namespace MapaSala.Formularios
             d.Nome = txtNomeDisciplina.Text;
             d.Sigla = txtSigla.Text;
 
-            dados.Rows.Add(d.Linha());
+            disciplinaDAO dao = new disciplinaDAO();
+            dao.Inserir(d);
+
+            dtGridDisciplina.DataSource = dao.ObterDisciplinas();
+
             LimparCampos();
         }
 
@@ -58,37 +60,10 @@ namespace MapaSala.Formularios
             txtSigla.Text = "";
         }
 
-        private void dtGridDisciplina_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
-            LinhaSelecionada = e.RowIndex;
-            txtNomeDisciplina.Text = dtGridDisciplina.Rows[LinhaSelecionada].Cells[1].Value.ToString();
-            txtSigla.Text = dtGridDisciplina.Rows[LinhaSelecionada].Cells[0].Value.ToString();
-            numId.Value = Convert.ToInt32(dtGridDisciplina.Rows[LinhaSelecionada].Cells[0].Value);
-        }
-
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            dtGridDisciplina.Rows.RemoveAt(LinhaSelecionada);
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow a = dtGridDisciplina.Rows[LinhaSelecionada];
-            a.Cells[0].Value = numId.Value;
-            a.Cells[1].Value = txtNomeDisciplina.Text;
-            a.Cells[2].Value = txtSigla.Text;
-
-
-        }
-
-        private void frmDisciplina_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtGridDisciplina_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            dtGridDisciplina.DataSource = dao.Pesquisar(txtPesquisa.Text);
         }
     }
 }

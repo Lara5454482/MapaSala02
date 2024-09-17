@@ -20,7 +20,7 @@ namespace MapaSala.DAO
         public void Inserir(CursosEntidade curso)
         {
             Conexao.Open();
-            string query = "Insert into Professores (Nome , Apelido) Values (@nome, @apelido) ";
+            string query = "Insert into Cursos ( Nome, Turno, Ativo) Values (@nome, @turno, @ativo) ";
             SqlCommand comando = new SqlCommand(query, Conexao);
             SqlParameter parametro1 = new SqlParameter("@nome", curso.Nome);
             SqlParameter parametro2 = new SqlParameter("@turno", curso.Turno);
@@ -63,7 +63,7 @@ namespace MapaSala.DAO
         {
             DataTable dt = new DataTable();
             Conexao.Open();
-            string query = "SELECT Id, Nome, Apelido FROM Cursos Order by Id desc";
+            string query = "SELECT Id, Nome, Turno, Ativo FROM Cursos Order by Id desc";
             SqlCommand comando = new SqlCommand(query, Conexao);
 
             SqlDataReader Leitura = comando.ExecuteReader();

@@ -41,7 +41,7 @@ namespace MapaSala.Formularios
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridProfessores)).BeginInit();
             this.SuspendLayout();
@@ -149,24 +149,24 @@ namespace MapaSala.Formularios
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(13, 110);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 11;
-            this.label4.Text = "label4";
+            this.label4.Text = "Pesquisar";
             // 
-            // textBox1
+            // txtPesquisa
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 126);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(214, 20);
-            this.textBox1.TabIndex = 12;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtPesquisa.Location = new System.Drawing.Point(12, 126);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(214, 20);
+            this.txtPesquisa.TabIndex = 12;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // frmProfessores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 564);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
@@ -204,6 +204,6 @@ namespace MapaSala.Formularios
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPesquisa;
     }
 }
