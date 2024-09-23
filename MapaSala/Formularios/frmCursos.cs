@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MapaSala.DAO;
 using Model.Entitidades;
 
 namespace MapaSala.Formularios
@@ -14,21 +15,23 @@ namespace MapaSala.Formularios
     public partial class frmCursos : Form
     {
         DataTable dados;
+
         int LinhaSelecionada;
+
+        cursoDAO dao = new cursoDAO();
         public frmCursos()
         {
             InitializeComponent();
             dados = new DataTable();
-            dtGridCursos.DataSource = dados;
+          
 
             foreach (var atributos in typeof(CursosEntidade).GetProperties())
             {
                 dados.Columns.Add(atributos.Name);
             }
 
-            dados.Rows.Add(1, "Desenvolvimento de Sistemas", "Integral", true);
-            dados.Rows.Add(2, "Itinerário Formativo", "Manhã", true);
-            dados.Rows.Add(3, "Administração", "Integral", true);
+            dados = dao.ObterCurso();
+            dtGridCursos.DataSource = dados;
         }
 
 
@@ -62,7 +65,6 @@ namespace MapaSala.Formularios
 
         private void bntEditar_Click(object sender, EventArgs e)
         {
-            DataGridViewRow a = dtGridCursos.Rows[LinhaSelecionada];
             DataGridViewRow Editar = dtGridCursos.Rows[LinhaSelecionada];
             Editar.Cells[0].Value = numId.Value;
             Editar.Cells[1].Value = txtNome.Text;
@@ -78,13 +80,17 @@ namespace MapaSala.Formularios
             cursos.Turno = txtTurno.Text;
             cursos.Ativo = chkAtivo.Checked;
 
-            dados.Rows.Add(cursos.Linha());
+            cursoDAO dao = new cursoDAO();
+            dao.Inserir(cursos);
+
+            dtGridCursos.DataSource = dao.ObterCurso();
+
             LimparCampos();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
-
+            dtGridCursos.DataSource = dao.Pesquisar(txtPesquisa.Text);
         }
     }
 }

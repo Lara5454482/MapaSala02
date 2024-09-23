@@ -20,14 +20,16 @@ namespace MapaSala.DAO
         public void Inserir(CursosEntidade curso)
         {
             Conexao.Open();
-            string query = "Insert into Cursos ( Nome, Turno, Ativo) Values (@nome, @turno, @ativo) ";
+            string query = "Insert into Cursos ( Nome, Turno, Sigla, Ativo) Values (@nome, @turno, @sigla, @ativo) ";
             SqlCommand comando = new SqlCommand(query, Conexao);
             SqlParameter parametro1 = new SqlParameter("@nome", curso.Nome);
             SqlParameter parametro2 = new SqlParameter("@turno", curso.Turno);
-            SqlParameter parametro3 = new SqlParameter("@ativo", curso.Ativo);
+            SqlParameter parametro3 = new SqlParameter("@sigla", curso.Turno);
+            SqlParameter parametro4 = new SqlParameter("@ativo", curso.Ativo);
             comando.Parameters.Add(parametro1);
             comando.Parameters.Add(parametro2);
             comando.Parameters.Add(parametro3);
+            comando.Parameters.Add(parametro4);
             comando.ExecuteNonQuery();
             Conexao.Close();
 
@@ -37,7 +39,7 @@ namespace MapaSala.DAO
         {
             DataTable dataTable = new DataTable();
 
-            string query = "SELECT Id, Nome FROM Cursos";
+            string query = "SELECT Id, Nome, Turno, Sigla, Ativo FROM Cursos";
 
             using (SqlConnection connection = new SqlConnection(LinhaConexao))
             {
@@ -63,7 +65,7 @@ namespace MapaSala.DAO
         {
             DataTable dt = new DataTable();
             Conexao.Open();
-            string query = "SELECT Id, Nome, Turno, Ativo FROM Cursos Order by Id desc";
+            string query = "SELECT Id, Nome, Turno, Sigla, Ativo FROM Cursos Order by Id desc";
             SqlCommand comando = new SqlCommand(query, Conexao);
 
             SqlDataReader Leitura = comando.ExecuteReader();
@@ -81,12 +83,53 @@ namespace MapaSala.DAO
                     p.Id = Convert.ToInt32(Leitura[0]);
                     p.Nome = Leitura[1].ToString();
                     p.Turno = Leitura[2].ToString();
-                    p.Ativo = Convert.ToBoolean( Leitura[3]);
+                    p.Sigla = Leitura[3].ToString();
+                    p.Ativo = Convert.ToBoolean(Leitura[4]);
                     dt.Rows.Add(p.Linha());
                 }
             }
 
+            Conexao.Close();
+            return dt;
+        }
+        public DataTable Pesquisar(string pesquisa)
+        {
+            DataTable dt = new DataTable();
+            Conexao.Open();
+            string query = "";
+            if (string.IsNullOrEmpty(pesquisa))
+            {
+                query = "SELECT Id, Nome, Turno, Sigla, Ativo FROM Cursos Order by Id desc";
+            }
+            else
+            {
+                query = "SELECT Id, Nome, Turno, Sigla, Ativo FROM Cursos Where Nome like '%" + pesquisa + "%' Order by Id desc";
+            }
 
+            SqlCommand comando = new SqlCommand(query, Conexao);
+
+            SqlDataReader Leitura = comando.ExecuteReader();
+
+            foreach (var atributos in typeof(CursosEntidade).GetProperties())
+            {
+                dt.Columns.Add(atributos.Name);
+            }
+
+            if (Leitura.HasRows)
+            {
+                while (Leitura.Read())
+                {
+                    CursosEntidade p = new CursosEntidade();
+                    p.Id = Convert.ToInt32(Leitura[0]);
+                    p.Nome = Leitura[1].ToString();
+                    p.Turno = Leitura[2].ToString();
+                    p.Sigla = Leitura[3].ToString();
+                    p.Ativo = Convert.ToBoolean(Leitura[4]);
+                    dt.Rows.Add(p.Linha());
+                }
+            }
+
+            Conexao.Close();
             return dt;
         }
 

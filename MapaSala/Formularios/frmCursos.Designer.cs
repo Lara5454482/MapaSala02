@@ -149,7 +149,6 @@ namespace MapaSala.Formularios
             this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 23;
             this.label4.Text = "Sigla";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtPesquisa
             // 
@@ -157,6 +156,7 @@ namespace MapaSala.Formularios
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(313, 20);
             this.txtPesquisa.TabIndex = 24;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
             // label1
             // 
