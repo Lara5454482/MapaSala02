@@ -24,7 +24,7 @@ namespace MapaSala.DAO
             SqlCommand comando = new SqlCommand(query, Conexao);
             SqlParameter parametro1 = new SqlParameter("@nome", disciplina.Nome);
             SqlParameter parametro2 = new SqlParameter("@sigla", disciplina.Sigla);
-            SqlParameter parametro3 = new SqlParameter("@sigla", disciplina.Ativo);
+            SqlParameter parametro3 = new SqlParameter("@ativo", disciplina.Ativo);
             comando.Parameters.Add(parametro1);
             comando.Parameters.Add(parametro2);
             comando.Parameters.Add(parametro3);
@@ -37,7 +37,7 @@ namespace MapaSala.DAO
         {
             DataTable dataTable = new DataTable();
 
-            string query = "SELECT Id, Nome, Sigla FROM Disciplinas";
+            string query = "SELECT Id, Nome, Sigla, Ativo FROM Disciplinas";
 
             using (SqlConnection connection = new SqlConnection(LinhaConexao))
             {
@@ -62,7 +62,7 @@ namespace MapaSala.DAO
         {
             DataTable dt = new DataTable();
             Conexao.Open();
-            string query = "SELECT Id, Nome, Sigla  FROM Disciplinas Order by Id desc";
+            string query = "SELECT Id, Nome, Sigla, Ativo FROM Disciplinas Order by Id desc";
             SqlCommand comando = new SqlCommand(query, Conexao);
 
             SqlDataReader Leitura = comando.ExecuteReader();
@@ -80,6 +80,7 @@ namespace MapaSala.DAO
                     p.Id = Convert.ToInt32(Leitura[0]);
                     p.Nome = Leitura[1].ToString();
                     p.Sigla = Leitura[2].ToString();
+                    p.Ativo = Convert.ToBoolean(Leitura[3]);
                     dt.Rows.Add(p.Linha());
                 }
             }
@@ -96,11 +97,11 @@ namespace MapaSala.DAO
             string query = "";
             if (string.IsNullOrEmpty(pesquisa))
             {
-                query = "SELECT Id, Nome, Sigla FROM Disciplinas Order by Id desc";
+                query = "SELECT Id, Nome, Sigla, Ativo FROM Disciplinas Order by Id desc";
             }
             else
             {
-                query = "SELECT Id, Nome, Sigla FROM Disciplinas Where Nome like '%" + pesquisa + "%' Order by Id desc";
+                query = "SELECT Id, Nome, Sigla, Ativo FROM Disciplinas Where Nome like '%" + pesquisa + "%' Order by Id desc";
             }
 
 
@@ -122,6 +123,7 @@ namespace MapaSala.DAO
                     p.Id = Convert.ToInt32(Leitura[0]);
                     p.Nome = Leitura[1].ToString();
                     p.Sigla = Leitura[2].ToString();
+                    p.Ativo = Convert.ToBoolean(Leitura[3]);
                     dt.Rows.Add(p.Linha());
                 }
             }

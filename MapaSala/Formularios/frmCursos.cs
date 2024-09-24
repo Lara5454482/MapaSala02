@@ -50,26 +50,6 @@ namespace MapaSala.Formularios
             numId.Value = 0;
             txtNome.Text = "";
             txtTurno.Text = "";
-            chkAtivo.Checked = false;
-        }
-    
-
-        private void dtGridCursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            LinhaSelecionada = e.RowIndex;
-            txtNome.Text = dtGridCursos.Rows[LinhaSelecionada].Cells[1].Value.ToString();
-            txtTurno.Text = dtGridCursos.Rows[LinhaSelecionada].Cells[2].Value.ToString();
-            chkAtivo.Checked = Convert.ToBoolean(dtGridCursos.Rows[LinhaSelecionada].Cells[3].Value);
-            numId.Value = Convert.ToInt32(dtGridCursos.Rows[LinhaSelecionada].Cells[0].Value);
-        }
-
-        private void bntEditar_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow Editar = dtGridCursos.Rows[LinhaSelecionada];
-            Editar.Cells[0].Value = numId.Value;
-            Editar.Cells[1].Value = txtNome.Text;
-            Editar.Cells[2].Value = txtTurno.Text;
-            Editar.Cells[4].Value = chkAtivo.Checked;
         }
 
         private void bntSalvar_Click(object sender, EventArgs e)
@@ -92,5 +72,6 @@ namespace MapaSala.Formularios
         {
             dtGridCursos.DataSource = dao.Pesquisar(txtPesquisa.Text);
         }
+
     }
 }

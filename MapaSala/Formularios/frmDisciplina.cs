@@ -16,6 +16,9 @@ namespace MapaSala.Formularios
     public partial class frmDisciplina : Form
     {
         DataTable dados;
+
+        int LinhaSelecionada;
+
         disciplinaDAO dao = new disciplinaDAO();
         public frmDisciplina()
         {
@@ -28,7 +31,7 @@ namespace MapaSala.Formularios
             }
 
 
-            dtGridDisciplina.DataSource = dao.ObterDisciplinas();
+            dados = dao.ObterDisciplinas();
             dtGridDisciplina.DataSource = dados;
 
         }
@@ -39,6 +42,7 @@ namespace MapaSala.Formularios
             d.Id = Convert.ToInt32(numId.Value);
             d.Nome = txtNomeDisciplina.Text;
             d.Sigla = txtSigla.Text;
+            d.Ativo = chkAtivo.Checked;
 
             disciplinaDAO dao = new disciplinaDAO();
             dao.Inserir(d);

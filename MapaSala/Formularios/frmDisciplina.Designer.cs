@@ -40,13 +40,14 @@ namespace MapaSala.Formularios
             this.btnLimpar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.chkAtivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridDisciplina)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(377, 27);
+            this.btnSalvar.Location = new System.Drawing.Point(441, 26);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(59, 23);
             this.btnSalvar.TabIndex = 0;
@@ -111,12 +112,12 @@ namespace MapaSala.Formularios
             this.dtGridDisciplina.Location = new System.Drawing.Point(16, 146);
             this.dtGridDisciplina.Name = "dtGridDisciplina";
             this.dtGridDisciplina.ReadOnly = true;
-            this.dtGridDisciplina.Size = new System.Drawing.Size(501, 359);
+            this.dtGridDisciplina.Size = new System.Drawing.Size(549, 359);
             this.dtGridDisciplina.TabIndex = 7;
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(442, 26);
+            this.btnLimpar.Location = new System.Drawing.Point(506, 26);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(59, 23);
             this.btnLimpar.TabIndex = 8;
@@ -137,15 +138,26 @@ namespace MapaSala.Formularios
             // 
             this.txtPesquisa.Location = new System.Drawing.Point(17, 120);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(500, 20);
+            this.txtPesquisa.Size = new System.Drawing.Size(548, 20);
             this.txtPesquisa.TabIndex = 12;
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            // 
+            // chkAtivo
+            // 
+            this.chkAtivo.AutoSize = true;
+            this.chkAtivo.Location = new System.Drawing.Point(377, 33);
+            this.chkAtivo.Name = "chkAtivo";
+            this.chkAtivo.Size = new System.Drawing.Size(50, 17);
+            this.chkAtivo.TabIndex = 14;
+            this.chkAtivo.Text = "Ativo";
+            this.chkAtivo.UseVisualStyleBackColor = true;
             // 
             // frmDisciplina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 545);
+            this.ClientSize = new System.Drawing.Size(593, 545);
+            this.Controls.Add(this.chkAtivo);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnLimpar);
@@ -180,5 +192,6 @@ namespace MapaSala.Formularios
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.CheckBox chkAtivo;
     }
 }

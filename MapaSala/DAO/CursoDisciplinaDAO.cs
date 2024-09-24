@@ -40,7 +40,7 @@ namespace MapaSala.DAO
         {
             DataTable dt = new DataTable();
             Conexao.Open();
-            string query = @"SELECT C.Nome NomeCurso, D.Nome NomeDiciplina, CD.periodo FROM CURSO_DISCIPLINA CD
+            string query = @"SELECT C.Nome NomeCurso, D.Nome NomeDiciplina, CD.Periodo Periodo FROM CURSO_DISCIPLINA CD
                                   INNER JOIN CURSOS C ON(C.Id = CD.Curso.Id) 
                                   INNER JOIN DISCIPLINAS D ON(C.Id = CD.Disciplinas.Id)
                                   ORDER BY CD.Id DESC";
@@ -51,7 +51,7 @@ namespace MapaSala.DAO
             dt.Columns.Add("NomeDiciplina");
             dt.Columns.Add("Periodo");
 
-            if (Leitura.Read())
+            if (Leitura.HasRows)
             {
                 while (Leitura.Read())
                 {
@@ -60,6 +60,48 @@ namespace MapaSala.DAO
                     p.NomeDisciplina = Leitura[1].ToString();
                     p.Periodo = Leitura[2].ToString();
                     dt.Rows.Add(p.Linha()); 
+                }
+            }
+            Conexao.Close();
+            return dt;
+        }
+        public DataTable Pesquisar(string pesquisa)
+        {
+            DataTable dt = new DataTable();
+            Conexao.Open();
+
+            string query = "";
+            if (string.IsNullOrEmpty(pesquisa))
+            {
+                query = @"SELECT C.Nome NomeCurso, D.Nome NomeDisciplina, CD.Periodo Periodo FROM CURSO_DISCIPLINA CD
+                            INNER JOIN CURSOS C ON (C.Id = CD.Curso_Id)
+                            INNER JOIN DISCIPLINAS D ON (D.Id = CD.Disciplina_Id)
+                            ORDER BY CD.Id DESC";
+            }
+            else
+            {
+                query = @"SELECT C.Nome NomeCurso, D.Nome NomeDisciplina, CD.Periodo Periodo FROM CURSO_DISCIPLINA CD
+                            INNER JOIN CURSOS C ON (C.Id = CD.Curso_Id)
+                            INNER JOIN DISCIPLINAS D ON (D.Id = CD.Disciplina_Id)
+                            WHERE D.NOME LIKE '%" + pesquisa + "%' OR C.NOME LIKE '%" + pesquisa + "%' ORDER BY CD.ID desc"; //concatenação
+            }
+
+            SqlCommand Comando = new SqlCommand(query, Conexao);
+            SqlDataReader Leitura = Comando.ExecuteReader(); //não entendi, erroo
+
+            foreach (var atributos in typeof(ProfessoresEntidade).GetProperties())//laço de reoetição para ler listas
+            {
+                dt.Columns.Add(atributos.Name);
+            }
+            if (Leitura.HasRows) //a linha existe? true or false
+            {
+                while (Leitura.Read())//para pegar mais de um registro, faz uma consulta
+                {
+                    CursoDisciplinaEntidade cursodis = new CursoDisciplinaEntidade();
+                    cursodis.NomeCurso = Leitura[0].ToString();
+                    cursodis.NomeDisciplina = Leitura[1].ToString();
+                    cursodis.Periodo = Leitura[2].ToString();
+                    dt.Rows.Add(cursodis.Linha());
                 }
             }
             Conexao.Close();

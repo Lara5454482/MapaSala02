@@ -50,7 +50,7 @@ namespace MapaSala.Formularios
             // chkAtivo
             // 
             this.chkAtivo.AutoSize = true;
-            this.chkAtivo.Location = new System.Drawing.Point(363, 44);
+            this.chkAtivo.Location = new System.Drawing.Point(363, 48);
             this.chkAtivo.Name = "chkAtivo";
             this.chkAtivo.Size = new System.Drawing.Size(50, 17);
             this.chkAtivo.TabIndex = 0;
@@ -123,7 +123,6 @@ namespace MapaSala.Formularios
             this.dtGridCursos.Name = "dtGridCursos";
             this.dtGridCursos.Size = new System.Drawing.Size(559, 203);
             this.dtGridCursos.TabIndex = 19;
-            this.dtGridCursos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridCursos_CellContentClick);
             // 
             // label3
             // 
