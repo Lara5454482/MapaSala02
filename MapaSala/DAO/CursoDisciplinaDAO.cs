@@ -40,7 +40,7 @@ namespace MapaSala.DAO
         {
             DataTable dt = new DataTable();
             Conexao.Open();
-            string query = @"SELECT C.Nome NomeCurso, D.Nome NomeDiciplina, CD.Periodo Periodo FROM CURSO_DISCIPLINA CD
+            string query = @"SELECT C.Nome NomeCurso, D.Nome NomeDisciplina, CD.Periodo Periodo FROM CURSO_DISCIPLINA CD
                                   INNER JOIN CURSOS C ON(C.Id = CD.Curso.Id) 
                                   INNER JOIN DISCIPLINAS D ON(C.Id = CD.Disciplinas.Id)
                                   ORDER BY CD.Id DESC";

@@ -37,6 +37,8 @@ namespace MapaSala.Formularios
             this.label1 = new System.Windows.Forms.Label();
             this.cbperiodos = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtCursoDisciplina)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@ namespace MapaSala.Formularios
             // dtCursoDisciplina
             // 
             this.dtCursoDisciplina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtCursoDisciplina.Location = new System.Drawing.Point(21, 103);
+            this.dtCursoDisciplina.Location = new System.Drawing.Point(12, 144);
             this.dtCursoDisciplina.Name = "dtCursoDisciplina";
             this.dtCursoDisciplina.Size = new System.Drawing.Size(480, 186);
             this.dtCursoDisciplina.TabIndex = 11;
@@ -119,11 +121,31 @@ namespace MapaSala.Formularios
             this.label3.TabIndex = 14;
             this.label3.Text = "Período";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label4.Location = new System.Drawing.Point(12, 90);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Pesquisa";
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Location = new System.Drawing.Point(12, 106);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(428, 20);
+            this.txtPesquisa.TabIndex = 16;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            // 
             // FrmCursoDisciplina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 331);
+            this.ClientSize = new System.Drawing.Size(552, 369);
+            this.Controls.Add(this.txtPesquisa);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbperiodos);
             this.Controls.Add(this.cbDisciplinas);
@@ -150,5 +172,7 @@ namespace MapaSala.Formularios
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbperiodos;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPesquisa;
     }
 }
