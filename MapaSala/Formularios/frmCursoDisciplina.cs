@@ -38,7 +38,7 @@ namespace MapaSala.Formularios
             cbCursos.DisplayMember = "Nome";
             cbCursos.ValueMember = "Id";
 
-            AtualizarGrid(dao.ObterCursosDisciplina());
+            AtualizarGrid(dao.ObterCursoDisciplina());
 
 
         }
@@ -49,9 +49,10 @@ namespace MapaSala.Formularios
             CursoDisciplinaEntidade entidade = new CursoDisciplinaEntidade();
             entidade.CursoId = Convert.ToInt32(cbCursos.SelectedValue);
             entidade.DisciplinaId = Convert.ToInt32(cbDisciplinas.SelectedValue);
-            entidade.Periodo = cbperiodos.SelectedValue.ToString();
+            entidade.Periodo = cbperiodos.SelectedItem.ToString();
 
             cursoDisciplinaDAO.Inserir(entidade);
+            AtualizarGrid(dao.ObterCursoDisciplina());
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)

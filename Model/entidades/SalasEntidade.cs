@@ -17,7 +17,7 @@ namespace Model.Entitidades
 
         public object[] Linha()
         {
-            return new object[] { Id, Nome, NumeroComputadores, NumeroCadeiras, IsLab, Disponivel };
+            return new object[] { Nome, NumeroComputadores, NumeroCadeiras, IsLab, Disponivel };
         }
     }
 }

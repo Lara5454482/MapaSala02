@@ -36,19 +36,19 @@ namespace MapaSala.DAO
             Conexao.Close();
 
         }
-        public DataTable ObterCursosDisciplina()
+        public DataTable ObterCursoDisciplina()
         {
             DataTable dt = new DataTable();
             Conexao.Open();
-            string query = @"SELECT C.Nome NomeCurso, D.Nome NomeDisciplina, CD.Periodo Periodo FROM CURSO_DISCIPLINA CD
-                                  INNER JOIN CURSOS C ON(C.Id = CD.Curso.Id) 
-                                  INNER JOIN DISCIPLINAS D ON(C.Id = CD.Disciplinas.Id)
-                                  ORDER BY CD.Id DESC";
+            string query = @"SELECT C.Nome AS NomeCurso, D.Nome AS NomeDisciplina, CD.Periodo  FROM CURSO_DISCIPLINA CD 
+                                INNER JOIN CURSOS C ON(C.Id = CD.Curso_Id)
+                                INNER JOIN DISCIPLINAS D ON(D.Id = CD.Disciplina_Id)
+                                ORDER BY CD.Id DESC";
             SqlCommand comando = new SqlCommand(query, Conexao);
             SqlDataReader Leitura = comando.ExecuteReader();
-            
+
             dt.Columns.Add("NomeCurso");
-            dt.Columns.Add("NomeDiciplina");
+            dt.Columns.Add("NomeDisciplina");
             dt.Columns.Add("Periodo");
 
             if (Leitura.HasRows)
@@ -59,7 +59,7 @@ namespace MapaSala.DAO
                     p.NomeCurso = Leitura[0].ToString();
                     p.NomeDisciplina = Leitura[1].ToString();
                     p.Periodo = Leitura[2].ToString();
-                    dt.Rows.Add(p.Linha()); 
+                    dt.Rows.Add(p.Linha());
                 }
             }
             Conexao.Close();
