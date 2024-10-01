@@ -120,7 +120,7 @@ namespace MapaSala.Formularios
             this.btnSalvar.TabIndex = 10;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click_1);
             // 
             // txtNumPc
             // 
@@ -190,7 +190,6 @@ namespace MapaSala.Formularios
             this.Name = "frmSalas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSalas";
-            this.Load += new System.EventHandler(this.frmSalas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtNumPc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumCadeira)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridSalas)).EndInit();

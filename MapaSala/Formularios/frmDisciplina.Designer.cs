@@ -114,6 +114,7 @@ namespace MapaSala.Formularios
             this.dtGridDisciplina.ReadOnly = true;
             this.dtGridDisciplina.Size = new System.Drawing.Size(549, 359);
             this.dtGridDisciplina.TabIndex = 7;
+            this.dtGridDisciplina.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridDisciplina_CellDoubleClick);
             // 
             // btnLimpar
             // 
@@ -156,7 +157,7 @@ namespace MapaSala.Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 545);
+            this.ClientSize = new System.Drawing.Size(597, 545);
             this.Controls.Add(this.chkAtivo);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label4);
