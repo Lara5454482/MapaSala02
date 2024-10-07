@@ -36,6 +36,7 @@ namespace MapaSala.Formularios.Editar
             this.txtSigla = new System.Windows.Forms.TextBox();
             this.txtNomeDisciplina = new System.Windows.Forms.TextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.label_id = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // chkAtivo
@@ -98,11 +99,21 @@ namespace MapaSala.Formularios.Editar
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             // 
+            // label_id
+            // 
+            this.label_id.AutoSize = true;
+            this.label_id.Location = new System.Drawing.Point(32, 35);
+            this.label_id.Name = "label_id";
+            this.label_id.Size = new System.Drawing.Size(35, 13);
+            this.label_id.TabIndex = 24;
+            this.label_id.Text = "label3";
+            // 
             // frmEditarDisciplina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 335);
+            this.Controls.Add(this.label_id);
             this.Controls.Add(this.chkAtivo);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.label2);
@@ -111,6 +122,7 @@ namespace MapaSala.Formularios.Editar
             this.Controls.Add(this.txtNomeDisciplina);
             this.Controls.Add(this.btnSalvar);
             this.Name = "frmEditarDisciplina";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditarDisciplina";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -126,5 +138,6 @@ namespace MapaSala.Formularios.Editar
         private System.Windows.Forms.TextBox txtSigla;
         private System.Windows.Forms.TextBox txtNomeDisciplina;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Label label_id;
     }
 }
