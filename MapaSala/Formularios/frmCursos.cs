@@ -73,5 +73,9 @@ namespace MapaSala.Formularios
             dtGridCursos.DataSource = dao.Pesquisar(txtPesquisa.Text);
         }
 
+        private void dtGridCursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

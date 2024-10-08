@@ -17,73 +17,73 @@ namespace MapaSala.Formularios
     public partial class frmDisciplina : Form
     {
         DataTable dados;
-
         int LinhaSelecionada;
 
         disciplinaDAO dao = new disciplinaDAO();
+
         public frmDisciplina()
         {
             InitializeComponent();
             dados = new DataTable();
-            
+
             foreach (var atributos in typeof(DisciplinaEntidade).GetProperties())
             {
                 dados.Columns.Add(atributos.Name);
             }
 
-
-            dados = dao.ObterDisciplinas();
-            dtGridDisciplina.DataSource = dados;
+            dtGridDisciplina.DataSource = dao.ObterDisciplinas();
 
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            DisciplinaEntidade d = new DisciplinaEntidade();
-            d.Id = Convert.ToInt32(numId.Value);
-            d.Nome = txtNomeDisciplina.Text;
-            d.Sigla = txtSigla.Text;
-            d.Ativo = chkAtivo.Checked;
+            FrmDisciplinaCadastrar cadastrar = new FrmDisciplinaCadastrar();
 
-            disciplinaDAO dao = new disciplinaDAO();
-            dao.Inserir(d);
+            // Inscreve-se no evento
+            cadastrar.FormClosed += Fechou_cadastrar_FormClosed;
 
-            dtGridDisciplina.DataSource = dao.ObterDisciplinas();
+            cadastrar.ShowDialog(); // Abre o formulário como um diálogo modal
 
-            LimparCampos();
         }
 
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            LimparCampos(); 
-        }
-
-        private void LimparCampos()
-        {
-            numId.Value = 0;
-            txtNomeDisciplina.Text = "";
-            txtSigla.Text = "";
-        }
-
-
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
-        {
-            dtGridDisciplina.DataSource = dao.Pesquisar(txtPesquisa.Text);
-        }
 
         private void dtGridDisciplina_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                int id = Convert.ToInt32(dtGridDisciplina.Rows[e.RowIndex].Cells[0].Value);
+                int id = Convert.ToInt32(
+                    dtGridDisciplina.Rows[e.RowIndex].Cells[0].Value);
+
+
+                frmEditarDisciplina editar = new frmEditarDisciplina(id);
+
+                // Inscreve-se no evento
+                editar.FormClosed += Fechou_Editar_FormClosed;
+
+                editar.ShowDialog(); // Abre o formulário como um diálogo modal
             }
-            frmEditarDisciplina editar = new frmEditarDisciplina(id);
-            editar.ShowDialog();
         }
+
+        private void Fechou_Editar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            dtGridDisciplina.DataSource = dao.ObterDisciplinas();
+        }
+        private void Fechou_cadastrar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            dtGridDisciplina.DataSource = dao.ObterDisciplinas();
+        }
+
 
         private void dtGridDisciplina_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            dtGridDisciplina.DataSource = dao.Pesquisar(txtPesquisa.Text);
         }
     }
 }

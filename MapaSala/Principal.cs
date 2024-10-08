@@ -58,5 +58,6 @@ namespace MapaSala
             FrmCursoDisciplina k = new FrmCursoDisciplina();
             k.ShowDialog();
         }
+
     }
 }
