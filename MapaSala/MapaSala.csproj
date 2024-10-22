@@ -46,11 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Usuários.cs" />
     <Compile Include="DAO\cursoDAO.cs" />
     <Compile Include="DAO\CursoDisciplinaDAO.cs" />
     <Compile Include="DAO\disciplinaDAO.cs" />
     <Compile Include="DAO\professorDAO.cs" />
     <Compile Include="DAO\SalasDao.cs" />
+    <Compile Include="Formularios\Cadastrar\CadastrarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Cadastrar\CadastrarUsuarios.Designer.cs">
+      <DependentUpon>CadastrarUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Editar\frmEditarDisciplina.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +114,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Cadastrar\CadastrarUsuarios.resx">
+      <DependentUpon>CadastrarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Editar\frmEditarDisciplina.resx">
       <DependentUpon>frmEditarDisciplina.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,5 +172,6 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
