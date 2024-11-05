@@ -44,9 +44,10 @@ namespace MapaSala.Formularios
 
             dados.Rows.Add(d.Linha());
             dao.Inserir(d);
-            MessageBox.Show("Disciplina Excluída com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Disciplina Cadastrada com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
+
     }
     }
 

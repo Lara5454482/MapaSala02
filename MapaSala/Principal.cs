@@ -59,5 +59,10 @@ namespace MapaSala
             k.ShowDialog();
         }
 
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUsuarios k = new frmUsuarios();
+            k.ShowDialog();
+        }
     }
 }

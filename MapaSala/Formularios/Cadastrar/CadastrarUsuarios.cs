@@ -1,5 +1,4 @@
-﻿using MapaSala.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,23 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MapaSala.Classes;
 
 namespace MapaSala.Formularios.Cadastrar
 {
-    public partial class CadastrarUsuarios : Form
+    public partial class frmCadastrarUsuario : Form
     {
-        public CadastrarUsuarios()
+        public frmCadastrarUsuario()
         {
             InitializeComponent();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            Usuários u = new Usuários();
+            Usuarios u = new Usuarios();
             u.Login = txtLogin.Text;
             u.Senha = txtSenha.Text;
-            u.Ativo = chkAtivo.Checked ;
-
+            u.Ativo = chkAtivo.Checked;
+            u.Inserir();
+            MessageBox.Show("Sucesso", "Cadastrado com sucesso");
+            Close();
         }
+
     }
 }

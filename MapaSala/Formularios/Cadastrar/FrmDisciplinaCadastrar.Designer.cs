@@ -35,8 +35,8 @@ namespace MapaSala.Formularios
             this.txtSigla = new System.Windows.Forms.TextBox();
             this.txtNomeDisciplina = new System.Windows.Forms.TextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.numId = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.numId = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numId)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,13 +92,6 @@ namespace MapaSala.Formularios
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // numId
-            // 
-            this.numId.Location = new System.Drawing.Point(56, 62);
-            this.numId.Name = "numId";
-            this.numId.Size = new System.Drawing.Size(99, 20);
-            this.numId.TabIndex = 32;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -107,6 +100,13 @@ namespace MapaSala.Formularios
             this.label3.Size = new System.Drawing.Size(16, 13);
             this.label3.TabIndex = 31;
             this.label3.Text = "Id";
+            // 
+            // numId
+            // 
+            this.numId.Location = new System.Drawing.Point(56, 62);
+            this.numId.Name = "numId";
+            this.numId.Size = new System.Drawing.Size(99, 20);
+            this.numId.TabIndex = 32;
             // 
             // FrmDisciplinaCadastrar
             // 
@@ -138,7 +138,7 @@ namespace MapaSala.Formularios
         private System.Windows.Forms.TextBox txtSigla;
         private System.Windows.Forms.TextBox txtNomeDisciplina;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.NumericUpDown numId;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numId;
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace MapaSala.Formularios.Cadastrar
 {
-    partial class CadastrarUsuarios
+    partial class frmCadastrarUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -41,22 +41,24 @@ namespace MapaSala.Formularios.Cadastrar
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.LavenderBlush;
             this.groupBox1.Controls.Add(this.btnCadastrar);
             this.groupBox1.Controls.Add(this.chkAtivo);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtSenha);
             this.groupBox1.Controls.Add(this.txtLogin);
-            this.groupBox1.Location = new System.Drawing.Point(12, 21);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(245, 266);
+            this.groupBox1.Size = new System.Drawing.Size(245, 255);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Cadastrar Usuário";
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(19, 188);
+            this.btnCadastrar.Location = new System.Drawing.Point(19, 219);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 11;
@@ -67,9 +69,9 @@ namespace MapaSala.Formularios.Cadastrar
             // chkAtivo
             // 
             this.chkAtivo.AutoSize = true;
-            this.chkAtivo.Location = new System.Drawing.Point(19, 132);
+            this.chkAtivo.Location = new System.Drawing.Point(19, 184);
             this.chkAtivo.Name = "chkAtivo";
-            this.chkAtivo.Size = new System.Drawing.Size(50, 17);
+            this.chkAtivo.Size = new System.Drawing.Size(57, 20);
             this.chkAtivo.TabIndex = 10;
             this.chkAtivo.Text = "Ativo";
             this.chkAtivo.UseVisualStyleBackColor = true;
@@ -77,42 +79,44 @@ namespace MapaSala.Formularios.Cadastrar
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 91);
+            this.label2.Location = new System.Drawing.Point(16, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(47, 16);
             this.label2.TabIndex = 9;
             this.label2.Text = "Senha";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 46);
+            this.label1.Location = new System.Drawing.Point(16, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(41, 16);
             this.label1.TabIndex = 8;
             this.label1.Text = "Login";
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(57, 88);
+            this.txtSenha.Location = new System.Drawing.Point(19, 139);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(100, 20);
+            this.txtSenha.Size = new System.Drawing.Size(202, 22);
             this.txtSenha.TabIndex = 7;
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(57, 43);
+            this.txtLogin.Location = new System.Drawing.Point(19, 69);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(100, 20);
+            this.txtLogin.Size = new System.Drawing.Size(202, 22);
             this.txtLogin.TabIndex = 6;
             // 
-            // CadastrarUsuarios
+            // frmCadastrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(270, 311);
+            this.BackColor = System.Drawing.Color.LavenderBlush;
+            this.ClientSize = new System.Drawing.Size(269, 311);
             this.Controls.Add(this.groupBox1);
-            this.Name = "CadastrarUsuarios";
+            this.Name = "frmCadastrarUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastrarUsuarios";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
